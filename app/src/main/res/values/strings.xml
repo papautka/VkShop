@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">VkShop</string>
+    <string name="nameTitle">Наименование товара</string>
+    <string name="descriptionProduct">Описание товара</string>
+    <string name="textPrice">Цена</string>
+    <string name="iconProduct">Иконка товара</string>
 </resources>

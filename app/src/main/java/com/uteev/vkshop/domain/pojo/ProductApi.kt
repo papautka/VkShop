@@ -6,12 +6,11 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-@Entity(tableName = "products")
 data class ProductApi (
     @PrimaryKey
     @SerializedName("id")
     @Expose
-    val id: Long?,
+    val id: Int?,
 
     @SerializedName("title")
     @Expose
