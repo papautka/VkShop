@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -45,4 +46,27 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // RxJava2 Retrofit2 Dependencies
+    implementation(libs.androidx.rxandroid)
+    implementation(libs.androidx.rxjava)
+    implementation(libs.androidx.retrofit)
+    implementation(libs.androidx.retrofit.converter.gson)
+    implementation ("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+
+
+    // ViewModel and LiveData
+    implementation(libs.androidx.livedata.ktx)
+    implementation(libs.androidx.viewmodel.ktx)
+    kapt(libs.androidx.lifycycle.compiler)
+    implementation(libs.androidx.lifycycle.streams)
+
+    // Room Dependencies
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler.get())
+    implementation(libs.androidx.room.ktx)
+
+    //Picasso
+    implementation(libs.picasso)
 }
