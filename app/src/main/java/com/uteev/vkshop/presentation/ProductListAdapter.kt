@@ -11,6 +11,7 @@ import kotlin.coroutines.coroutineContext
 
 class ProductListAdapter : ListAdapter<ProductDB, ProductItemViewHolder>(ProductItemDiffCallback()) {
 
+    var onProductItemClick : ((ProductDB) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductItemViewHolder {
         val layout = R.layout.item_product
         val viewProductDB = LayoutInflater.from(parent.context).inflate(layout, parent, false)
@@ -20,6 +21,9 @@ class ProductListAdapter : ListAdapter<ProductDB, ProductItemViewHolder>(Product
     override fun onBindViewHolder(viewHolder: ProductItemViewHolder, position: Int) {
         val product = getItem(position)
         with(viewHolder) {
+            view.setOnClickListener {
+                onProductItemClick?.invoke(product)
+            }
             tvTitle.text=product.title.toString()
             tvDescription.text=product.description.toString()
             tvPrice.text=product.price.toString()

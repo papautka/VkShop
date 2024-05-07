@@ -7,4 +7,10 @@
     <string name="tvNoConnection">Нет соединения</string>
     <string name="DescriptionNoConnect">Проверьте соединение с сетью и обновите страницу</string>
     <string name="bTextUpdate">Обновить</string>
+    <string name="category">Категория: %s</string>
+    <string name="brand">Бренд: %s</string>
+    <string name="in_stock">В наличии: %d</string>
+    <string name="rating">Рейтинг: %.2f</string>
+    <string name="discount">Скидка: %.2f%%</string>
+    <string name="price">Цена: $%d</string>
 </resources>

@@ -1,16 +1,12 @@
 package com.uteev.vkshop.presentation
 
-import CheckNetwork
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.util.Log
 import android.widget.ProgressBar
-import android.widget.ScrollView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
@@ -23,8 +19,6 @@ class ProductListActivity : AppCompatActivity() {
 
     private lateinit var productViewModel: ProductViewModel
     private lateinit var productListAdapter: ProductListAdapter
-    private lateinit var checkNetwork: CheckNetwork
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +90,7 @@ class ProductListActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         val rvProduct = findViewById<RecyclerView>(R.id.rv_list_product)
         installRv(rvProduct)
+        setupOnClickListener()
     }
 
     private fun installRv(rvProduct : RecyclerView) {
@@ -104,7 +99,6 @@ class ProductListActivity : AppCompatActivity() {
             productListAdapter = ProductListAdapter()
             adapter = productListAdapter
         }
-
     }
     fun isNetworkAvailable(): Boolean {
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -116,6 +110,13 @@ class ProductListActivity : AppCompatActivity() {
         super.onDestroy()
         // Отменяем регистрацию приемника широковещательных сообщений при уничтожении активности
         unregisterReceiver(updateDataReceiver)
+    }
+
+    private fun setupOnClickListener() {
+        productListAdapter.onProductItemClick = {
+            val intentElement = ProductElementActivity.newIntent(this, it)
+            startActivity(intentElement)
+        }
     }
 
 }
