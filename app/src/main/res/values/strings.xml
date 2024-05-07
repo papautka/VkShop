@@ -4,4 +4,7 @@
     <string name="descriptionProduct">Описание товара</string>
     <string name="textPrice">Цена</string>
     <string name="iconProduct">Иконка товара</string>
+    <string name="tvNoConnection">Нет соединения</string>
+    <string name="DescriptionNoConnect">Проверьте соединение с сетью и обновите страницу</string>
+    <string name="bTextUpdate">Обновить</string>
 </resources>

@@ -13,7 +13,6 @@ class ProductListAdapter : ListAdapter<ProductDB, ProductItemViewHolder>(Product
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductItemViewHolder {
         val layout = R.layout.item_product
-        Log.d("TAG", "onCreateViewHolder: $layout")
         val viewProductDB = LayoutInflater.from(parent.context).inflate(layout, parent, false)
         return ProductItemViewHolder(viewProductDB)
     }
