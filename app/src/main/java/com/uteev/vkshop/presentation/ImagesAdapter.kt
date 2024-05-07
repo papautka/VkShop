@@ -24,6 +24,7 @@ class ImagesAdapter(private val context: Context, private val images: List<Strin
         Picasso.get()
             .load(imageUrl)
             .placeholder(R.drawable.place_holder_image)
+            .resize(950, 1000)
             .into(holder.imageView)
     }
 

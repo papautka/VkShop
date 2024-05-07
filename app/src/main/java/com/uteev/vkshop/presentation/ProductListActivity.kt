@@ -10,17 +10,27 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uteev.vkshop.R
+import javax.inject.Inject
 
 class ProductListActivity : AppCompatActivity() {
 
     private lateinit var productViewModel: ProductViewModel
     private lateinit var productListAdapter: ProductListAdapter
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private val component by lazy {
+        (application as ProductApp).component
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        component.inject(this)
         super.onCreate(savedInstanceState)
 
         if (!isNetworkAvailable()) {
@@ -33,7 +43,7 @@ class ProductListActivity : AppCompatActivity() {
     private fun startProductList() {
         setContentView(R.layout.activity_product_list)
         setupRecyclerView()
-        productViewModel = ViewModelProvider(this)[ProductViewModel::class.java]
+        productViewModel = ViewModelProvider(this, viewModelFactory)[ProductViewModel::class.java]
         productViewModel.priceList.observe(this) {
             Log.d("TAG", it.toString())
             productListAdapter.submitList(it)

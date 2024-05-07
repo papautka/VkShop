@@ -1,44 +1,40 @@
 package com.uteev.vkshop.presentation
 
 import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
 import android.util.Log
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
-import com.uteev.vkshop.R
 import com.uteev.vkshop.data.api.ApiFactory
 import com.uteev.vkshop.data.database.AppDatabase
 import com.uteev.vkshop.domain.pojo.ProductApi
 import com.uteev.vkshop.domain.pojo.ProductDB
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class ProductViewModel(application: Application) : AndroidViewModel(application) {
+class ProductViewModel @Inject constructor(
+    private val application: Application,
+    private val database: AppDatabase
+) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    private val db = AppDatabase.getInstance(application)
-    val priceList = db.coinPriceInfoDao().getProductList()
+    val priceList = database.coinPriceInfoDao().getProductList()
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
     fun getDetailInfo(id : Int) : LiveData<ProductDB> {
-        return db.coinPriceInfoDao().getProduct(id)
+        return database.coinPriceInfoDao().getProduct(id)
     }
 
     fun updateProductList(listProductDB: List<ProductDB>) {
         Thread {
-            db.coinPriceInfoDao().replaceProductList(listProductDB)
+            database.coinPriceInfoDao().replaceProductList(listProductDB)
         }.start()
     }
     private fun fromJsonToProductDB(products: List<ProductApi>): List<ProductDB> {
@@ -57,7 +53,7 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
 
     private fun insertProductsDB(products: List<ProductDB>) {
         Thread {
-            db.coinPriceInfoDao().insertPriceList(products)
+            database.coinPriceInfoDao().insertPriceList(products)
         }.start()
     }
     private var skip = 0 // Заданное значение параметра skip

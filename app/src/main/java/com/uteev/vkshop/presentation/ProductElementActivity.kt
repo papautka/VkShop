@@ -50,7 +50,7 @@ class ProductElementActivity : AppCompatActivity() {
     }
 
     private fun showElement(product: ProductDB) {
-        textViewTitle.text = product.title
+        textViewTitle.text = getString(R.string.description, product.title)
         textViewDescription.text = product.description
         textViewPrice.text = getString(R.string.price, product.price)
         textViewDiscount.text = getString(R.string.discount, product.discountPercentage)
