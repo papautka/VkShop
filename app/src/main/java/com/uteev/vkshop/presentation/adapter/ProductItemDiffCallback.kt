@@ -1,4 +1,4 @@
-package com.uteev.vkshop.presentation
+package com.uteev.vkshop.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.uteev.vkshop.domain.pojo.ProductDB

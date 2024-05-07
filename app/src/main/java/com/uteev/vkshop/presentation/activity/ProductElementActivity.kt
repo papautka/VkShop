@@ -1,4 +1,4 @@
-package com.uteev.vkshop.presentation
+package com.uteev.vkshop.presentation.activity
 
 import android.content.Context
 import android.content.Intent
@@ -9,9 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uteev.vkshop.R
-import com.uteev.vkshop.data.database.AppDatabase
 import com.uteev.vkshop.domain.pojo.ProductDB
-import java.text.Format
+import com.uteev.vkshop.presentation.adapter.ImagesAdapter
 
 class ProductElementActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.uteev.vkshop.presentation
+package com.uteev.vkshop.presentation.adapter
 
 import android.view.View
 import android.widget.ImageView

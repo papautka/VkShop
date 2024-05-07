@@ -1,4 +1,4 @@
-package com.uteev.vkshop.presentation
+package com.uteev.vkshop.presentation.activity
 
 import android.content.Context
 import android.content.Intent

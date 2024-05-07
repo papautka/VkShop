@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 class ProductViewModel @Inject constructor(
     private val application: Application,
-    private val database: AppDatabase
+    private val database: AppDatabase,
+    private val apiFactory: ApiFactory
 ) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
@@ -60,9 +61,9 @@ class ProductViewModel @Inject constructor(
     var limit = 20 // Заданное значение параметра limit
 
     fun loadData() {
-        val disposable = ApiFactory.apiService.getProducts(limit = limit, skip = skip)
+        val disposable = apiFactory.apiService.getProducts(limit = limit, skip = skip)
             .map { it.products ?: emptyList() }
-            .flatMap { ApiFactory.apiService.getProducts(limit = limit, skip = skip) }
+            .flatMap { apiFactory.apiService.getProducts(limit = limit, skip = skip) }
             .delaySubscription(10, TimeUnit.SECONDS)
             .repeat()
             .retry()

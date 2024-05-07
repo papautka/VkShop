@@ -1,4 +1,4 @@
-package com.uteev.vkshop.presentation
+package com.uteev.vkshop.presentation.activity
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -10,11 +10,14 @@ import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.uteev.vkshop.R
+import com.uteev.vkshop.presentation.ProductApp
+import com.uteev.vkshop.presentation.ProductViewModel
+import com.uteev.vkshop.presentation.ViewModelFactory
+import com.uteev.vkshop.presentation.adapter.ProductListAdapter
 import javax.inject.Inject
 
 class ProductListActivity : AppCompatActivity() {
@@ -54,7 +57,6 @@ class ProductListActivity : AppCompatActivity() {
 
     private val updateDataReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            // Вызываем метод для обновления данных в вашем ViewModel или в вашем адаптере
             productViewModel.loadData()
         }
     }

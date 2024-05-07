@@ -4,74 +4,132 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:layout_height="wrap_content">
+android:layout_height="match_parent">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/category"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerViewImages"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="@+id/recyclerViewImages"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewImages"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewDescription"
-        android:layout_width="405dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="12dp"
-        android:text="@string/descriptionProduct"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
-        app:layout_constraintHorizontal_bias="0.055"
-        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewTitle"
+        android:layout_width="375dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/DarkTurquoise"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewImages">
 
-    <!-- Скидка на продукт -->
-    <TextView
-        android:id="@+id/textViewPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/price"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewDescription"
-        app:layout_constraintHorizontal_bias="0.102"
-        app:layout_constraintStart_toStartOf="@+id/textViewDescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/category"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
 
-    <!-- Рейтинг продукта -->
-    <TextView
-        android:id="@+id/textViewDiscount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/discount"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textViewPrice"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewDescription"
+        android:layout_width="342dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/Lavender"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/cardViewTitle"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textViewPrice"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+        app:layout_constraintStart_toStartOf="@+id/cardViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewTitle">
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:layout_margin="16dp"
+            android:text="@string/descriptionProduct"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewPrice"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/DarkGreen"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/textViewRating"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewDescription">
+
+        <TextView
+            android:id="@+id/textViewPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@string/price"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewDiscount"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/Tomato"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textViewBrand"
+        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewPrice"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textViewDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/discount"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/textViewRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="88dp"
         android:text="@string/rating"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textViewDiscount"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDiscount" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewDescription" />
 
-    <!-- Наличие на складе -->
     <TextView
         android:id="@+id/textViewStock"
         android:layout_width="wrap_content"
@@ -106,17 +164,6 @@ android:layout_height="wrap_content">
         app:layout_constraintStart_toStartOf="@+id/textViewBrand"
         app:layout_constraintTop_toBottomOf="@+id/textViewBrand" />
 
-    <!-- RecyclerView для отображения изображений продукта -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewImages"
-        android:layout_width="0dp"
-        android:layout_height="380dp"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

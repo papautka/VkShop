@@ -1,15 +1,15 @@
 package com.uteev.vkshop.di
 
 import android.app.Application
-import com.uteev.vkshop.presentation.ProductListActivity
-import dagger.Binds
+import com.uteev.vkshop.presentation.activity.ProductListActivity
 import dagger.BindsInstance
 import dagger.Component
 
 @Component(
     modules = [
         DataModule::class,
-        ViewModelModule::class
+        ViewModelModule::class,
+        ApiModule::class
     ]
 
 )

@@ -1,13 +1,12 @@
-package com.uteev.vkshop.presentation
+package com.uteev.vkshop.presentation.adapter
 
-import android.util.Log
+import android.provider.Settings.Global.getString
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.squareup.picasso.Picasso
 import com.uteev.vkshop.R
 import com.uteev.vkshop.domain.pojo.ProductDB
-import kotlin.coroutines.coroutineContext
 
 class ProductListAdapter : ListAdapter<ProductDB, ProductItemViewHolder>(ProductItemDiffCallback()) {
 
@@ -26,7 +25,11 @@ class ProductListAdapter : ListAdapter<ProductDB, ProductItemViewHolder>(Product
             }
             tvTitle.text=product.title.toString()
             tvDescription.text=product.description.toString()
-            tvPrice.text=product.price.toString()
+            tvPrice.text = buildString {
+                append("Цена:")
+                append(product.price)
+                append("$")
+            }
             Picasso.get().load(product.thumbnail).into(viewHolder.ivImage)
         }
     }

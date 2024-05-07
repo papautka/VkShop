@@ -4,4 +4,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="PaleTurquoise"> #AFEEEE</color>
     <color name="SteelBlue">#4682B4</color>
+    <color name="Lime">#00FF00</color>
+    <color name="DarkTurquoise">#00CED1</color>
+    <color name="Lavender">#E6E6FA</color>
+    <color name="Tomato">#FF6347</color>
+    <color name="DarkGreen">#006400</color>
+    <color name="MediumSeaGreen">#3CB371</color>
+    <color name="Aqua">#00FFFF</color>
 </resources>
